@@ -8,6 +8,7 @@ import { AddSkill } from "./controllers/profile/AddSkill";
 import { GetUser } from "./controllers/users/GetUser";
 import { AddExperience } from "./controllers/profile/AddExperience";
 import { AddAcademic } from "./controllers/profile/AddAcademic";
+import { UpdateUser } from "./controllers/users/UpdateUser";
 
 const router = Router()
 
@@ -20,13 +21,13 @@ const addExperience = new AddExperience()
 const addAcademic = new AddAcademic()
 
 
-
 const getUser = new GetUser()
-
+const updateUser = new UpdateUser()
 
 
 router.get("/listUsers", listUsers.handle)
 router.get("/GetUser/:userId", getUser.handle)
+router.put("/UpdateUser", AuthUser, updateUser.handle)
 
 router.post("/createUser", createUser.handle)
 router.post("/login", login.handle)
