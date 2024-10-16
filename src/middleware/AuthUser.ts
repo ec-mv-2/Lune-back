@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { userModel } from "../controllers/users/UserSchema";
+import { userModel } from "../controllers/models/UserModel";
 import jwt from 'jsonwebtoken';
 type jwtProps = {
     id: string

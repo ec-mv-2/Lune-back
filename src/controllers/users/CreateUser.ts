@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { userModel } from "./UserSchema";
+import { userModel } from "../models/UserModel";
 
 import bcryptjs from 'bcryptjs'
 
@@ -23,7 +23,12 @@ export class CreateUser {
                 cpf,
                 cep,
                 birthDate,
-                state
+                state,
+                bio: "",
+                position: "",
+                skills: [],
+                experience: [],
+                academic: []
             })
     
             res.status(200).json(newUser)

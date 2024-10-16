@@ -9,7 +9,12 @@ const userSchema = new Schema({
     cep: String,
     state: String,
     cpf: String,
-    birthDate: String       
+    birthDate: String,
+    bio: String,
+    position: String,
+    skills: [],
+    experience: Array,
+    academic: Array     
 })
 
 export const userModel = model("users", userSchema)

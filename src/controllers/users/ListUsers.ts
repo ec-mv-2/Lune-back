@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { userModel } from "./UserSchema";
+import { userModel } from "../models/UserModel";
 
 export class ListUsers {
     async handle(req: Request, res: Response){
