@@ -4,7 +4,6 @@ import { userModel } from "../models/UserModel";
 export class PersistenceLogin{
     async handle(req: Request, res: Response){
         try{
-            console.log(req.userId)
             const user = await userModel.findOne({
                 _id: req.userId
             })

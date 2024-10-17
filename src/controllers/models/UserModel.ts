@@ -14,7 +14,8 @@ const userSchema = new Schema({
     position: String,
     skills: [],
     experience: Array,
-    academic: Array     
+    academic: Array,
+    isContractor: Boolean
 })
 
 export const userModel = model("users", userSchema)
