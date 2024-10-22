@@ -9,6 +9,10 @@ import { GetUser } from "./controllers/users/GetUser";
 import { AddExperience } from "./controllers/profile/AddExperience";
 import { AddAcademic } from "./controllers/profile/AddAcademic";
 import { UpdateUser } from "./controllers/users/UpdateUser";
+import {CreatePosition} from "./controllers/Positions/CreatePosition";
+import {DeletePosition} from "./controllers/Positions/DeletePosition";
+import {ListPosition} from "./controllers/Positions/ListPosition";
+import {UpdatePosition} from "./controllers/Positions/UpdatePosition";
 
 const router = Router()
 
@@ -24,6 +28,10 @@ const addAcademic = new AddAcademic()
 const getUser = new GetUser()
 const updateUser = new UpdateUser()
 
+const createPosition = new CreatePosition()
+const deletePosition = new DeletePosition()
+const listPosition = new ListPosition()
+const updatePosition = new UpdatePosition()
 
 router.get("/listUsers", listUsers.handle)
 router.get("/GetUser/:userId", getUser.handle)
@@ -37,5 +45,9 @@ router.put("/AddSkill", AuthUser, addSkill.handle)
 router.put("/AddExperience", AuthUser, addExperience.handle)
 router.put("/AddAcademic", AuthUser, addAcademic.handle)
 
+router.post("/AddPosition", AuthUser, createPosition.handle)
+router.delete("/DeletePosition/:id", AuthUser, deletePosition.handle)
+router.get("/ListPosition", AuthUser, listPosition.handle)
+router.put("/UpdatePosition", AuthUser, updatePosition.handle)
 
 export { router }
