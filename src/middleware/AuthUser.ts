@@ -7,7 +7,6 @@ type jwtProps = {
 export default async function AuthUser(req: Request, res: Response, next: NextFunction){
     try{
         const { authorization } = req.headers;
-        console.log(authorization)
         if (!authorization) {
             return res.status(500).send({ err: "Autorização inválida" });
         }
