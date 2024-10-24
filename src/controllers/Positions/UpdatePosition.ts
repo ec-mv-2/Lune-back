@@ -7,8 +7,9 @@ export class UpdatePosition {
         try{
             
 
-            const {id, 
-                title, 
+            const {
+                title,
+                newTitle, 
                 enterprise, 
                 summary,
                 salary, 
@@ -32,7 +33,7 @@ export class UpdatePosition {
             
 
             const position = await positionModel.findOne({
-                _id: id
+                title: title
             })
 
             if(!position)
@@ -40,10 +41,10 @@ export class UpdatePosition {
 
 
             const updatePosition= await positionModel.updateOne({
-                _id: id 
+                title: title
             },
             {
-                title, 
+                title: newTitle, 
                 enterprise, 
                 summary,
                 salary, 
