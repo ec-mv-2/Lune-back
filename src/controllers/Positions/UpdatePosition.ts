@@ -8,8 +8,8 @@ export class UpdatePosition {
             
 
             const {
+                id,
                 title,
-                newTitle, 
                 enterprise, 
                 summary,
                 salary, 
@@ -21,6 +21,18 @@ export class UpdatePosition {
                 degree,
                 experience, isPrivate} = req.body
 
+console.log(id, title,
+    enterprise, 
+    summary,
+    salary, 
+    skill,
+    jobModel,
+    location,
+    startDate,
+    endDate,
+    degree,
+    experience, isPrivate)
+
             const contractor = await userModel.findOne({
                 _id: req.userId
             })
@@ -30,21 +42,12 @@ export class UpdatePosition {
 
             if(!contractor.isContractor)
                 return res.status(404).send({message: "Usuário não é contratante"})
-            
-
-            const position = await positionModel.findOne({
-                title: title
-            })
-
-            if(!position)
-                return res.status(404).send({message: "Vaga não existe"})
-
 
             const updatePosition= await positionModel.updateOne({
-                title: title
+                _id: id
             },
             {
-                title: newTitle, 
+                title,
                 enterprise, 
                 summary,
                 salary, 
@@ -54,11 +57,10 @@ export class UpdatePosition {
                 startDate,
                 endDate,
                 degree,
-                experience,
-                isPrivate
+                experience, isPrivate
             })
     
-            res.status(200).json(updatePosition)
+            return res.status(200).json(updatePosition)
         }catch(err){
             console.log(err)
         }
