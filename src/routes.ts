@@ -12,6 +12,7 @@ import { UpdateUser } from "./controllers/users/UpdateUser";
 import {CreatePosition} from "./controllers/Positions/CreatePosition";
 import {DeletePosition} from "./controllers/Positions/DeletePosition";
 import {ListPosition} from "./controllers/Positions/ListPosition";
+import {ListJob} from "./controllers/Positions/ListJob";
 import {UpdatePosition} from "./controllers/Positions/UpdatePosition";
 
 const router = Router()
@@ -32,6 +33,7 @@ const createPosition = new CreatePosition()
 const deletePosition = new DeletePosition()
 const listPosition = new ListPosition()
 const updatePosition = new UpdatePosition()
+const listJob = new ListJob()
 
 router.get("/listUsers", listUsers.handle)
 router.get("/GetUser/:userId", getUser.handle)
@@ -48,6 +50,7 @@ router.put("/AddAcademic", AuthUser, addAcademic.handle)
 router.post("/AddPosition", AuthUser, createPosition.handle)
 router.delete("/DeletePosition/:title", AuthUser, deletePosition.handle)
 router.get("/ListPosition", AuthUser, listPosition.handle)
+router.get("/ListJob/:jobId", listJob.handle)
 router.put("/UpdatePosition", AuthUser, updatePosition.handle)
 
 export { router }
