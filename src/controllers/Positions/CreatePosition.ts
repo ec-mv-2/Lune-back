@@ -43,7 +43,9 @@ export class CreatePosition {
                 endDate,
                 degree,
                 experience,
-                isPrivate
+                isPrivate,
+                candidates: [],
+                contractorId: req.userId
             })
     
             res.status(200).json(newPosition)
