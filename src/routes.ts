@@ -50,7 +50,7 @@ router.put("/AddAcademic", AuthUser, addAcademic.handle)
 router.post("/AddPosition", AuthUser, createPosition.handle)
 router.delete("/DeletePosition/:title", AuthUser, deletePosition.handle)
 router.get("/ListPosition", AuthUser, listPosition.handle)
-router.get("/ListJob/:jobId", listJob.handle)
+router.get("/ListJob/:jobId", AuthUser, listJob.handle)
 router.put("/UpdatePosition", AuthUser, updatePosition.handle)
 
 export { router }
