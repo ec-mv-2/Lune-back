@@ -72,7 +72,7 @@ router.put("/DeleteAcademic", AuthUser, deleteAcademic.handle)
 
 
 router.post("/AddPosition", AuthUser, createPosition.handle)
-router.delete("/DeletePosition/:title", AuthUser, deletePosition.handle)
+router.delete("/DeletePosition/:id", AuthUser, deletePosition.handle)
 router.get("/ListPosition", AuthUser, listPosition.handle)
 router.get("/ListPositionByUser", AuthUser, listPositionByUser.handle)
 router.get("/ListJob/:jobId", listJob.handle)

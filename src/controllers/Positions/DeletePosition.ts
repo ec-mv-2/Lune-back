@@ -6,9 +6,9 @@ export class DeletePosition {
     async handle(req: Request, res: Response){
         try{
             
-            const {title} = req.params
+            const {id} = req.params
 
-            console.log(title)
+            console.log(id)
             const contractor = await userModel.findOne({
                 _id: req.userId
             })
@@ -21,7 +21,7 @@ export class DeletePosition {
             
 
             const position = await positionModel.findOne({
-                title: title
+                _id:id
             })
 
             if(!position)
@@ -29,7 +29,7 @@ export class DeletePosition {
 
 
             const deletePosition= await positionModel.deleteOne({
-                title: title
+                _id: id
             })
     
             res.status(200).json(deletePosition)
