@@ -15,6 +15,11 @@ import {ListPosition} from "./controllers/Positions/ListPosition";
 import {ListJob} from "./controllers/Positions/ListJob";
 import {UpdatePosition} from "./controllers/Positions/UpdatePosition";
 import { AddCandidate } from "./controllers/Positions/AddCandidate";
+import { DeleteSkill } from "./controllers/profile/DeleteSkill";
+import { EditSkill } from "./controllers/profile/EditSkill";
+import { ListPositionByUser } from "./controllers/Positions/ListPositionsByUser";
+import { DeleteExperience } from "./controllers/profile/DeleteExperience";
+import { DeleteAcademic } from "./controllers/profile/DeleteAcademic";
 
 const router = Router()
 
@@ -22,15 +27,23 @@ const listUsers = new ListUsers()
 const createUser = new CreateUser()
 const login = new Login()
 const persistenceLogin = new PersistenceLogin()
+
 const addSkill = new AddSkill()
+const editSkill = new EditSkill()
+const deleteSkill = new DeleteSkill()
+
 const addExperience = new AddExperience()
+const deleteExperience = new DeleteExperience()
+
 const addAcademic = new AddAcademic()
+const deleteAcademic = new DeleteAcademic()
 
 
 const getUser = new GetUser()
 const updateUser = new UpdateUser()
 
 const createPosition = new CreatePosition()
+const listPositionByUser = new ListPositionByUser()
 const deletePosition = new DeletePosition()
 const listPosition = new ListPosition()
 const updatePosition = new UpdatePosition()
@@ -47,12 +60,21 @@ router.post("/login", login.handle)
 router.get("/persistenceLogin", AuthUser, persistenceLogin.handle)
 
 router.put("/AddSkill", AuthUser, addSkill.handle)
+router.put("/EditSkill", AuthUser, editSkill.handle)
+router.put("/DeleteSkill", AuthUser, deleteSkill.handle)
+
 router.put("/AddExperience", AuthUser, addExperience.handle)
+router.put("/DeleteExperience", AuthUser, deleteExperience.handle)
+
+
 router.put("/AddAcademic", AuthUser, addAcademic.handle)
+router.put("/DeleteAcademic", AuthUser, deleteAcademic.handle)
+
 
 router.post("/AddPosition", AuthUser, createPosition.handle)
 router.delete("/DeletePosition/:title", AuthUser, deletePosition.handle)
 router.get("/ListPosition", AuthUser, listPosition.handle)
+router.get("/ListPositionByUser", AuthUser, listPositionByUser.handle)
 router.get("/ListJob/:jobId", listJob.handle)
 router.put("/UpdatePosition", AuthUser, updatePosition.handle)
 

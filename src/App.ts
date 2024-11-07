@@ -6,7 +6,7 @@ import { resolve } from 'path'
 const app = express()
 
 
-mongoose.connect('mongodb://localhost:27017/lune')
+mongoose.connect('mongodb+srv://kauankauan:e$wTS4n4Rv3qV!3@cluster0.m59di.mongodb.net/crud')
 
 /*app.get("/getUsers", (req, res)=>{
     userModel.find({}).then(function(users){
