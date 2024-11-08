@@ -20,8 +20,13 @@ import { EditSkill } from "./controllers/profile/EditSkill";
 import { ListPositionByUser } from "./controllers/Positions/ListPositionsByUser";
 import { DeleteExperience } from "./controllers/profile/DeleteExperience";
 import { DeleteAcademic } from "./controllers/profile/DeleteAcademic";
+import { SendMessage } from "./controllers/Communication.ts/SendMessage";
+import { GetConversation } from "./controllers/Communication.ts/GetConversation";
 
 const router = Router()
+
+const sendMessage = new SendMessage();
+const getConversation = new GetConversation();
 
 const listUsers = new ListUsers()
 const createUser = new CreateUser()
@@ -49,6 +54,9 @@ const listPosition = new ListPosition()
 const updatePosition = new UpdatePosition()
 const listJob = new ListJob()
 const addCandidate = new AddCandidate()
+
+router.post("/sendMessage", AuthUser, sendMessage.handle);
+router.get("/getConversation/:user1/:user2", AuthUser, getConversation.handle);
 
 
 router.get("/listUsers", listUsers.handle)
