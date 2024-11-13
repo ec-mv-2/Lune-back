@@ -23,6 +23,7 @@ import { DeleteAcademic } from "./controllers/profile/DeleteAcademic";
 import { SendMessage } from "./controllers/Communication.ts/SendMessage";
 import { GetConversation } from "./controllers/Communication.ts/GetConversation";
 import { ListFreelancers } from "./controllers/users/ListFreelancers";
+import { SendHelp } from "./controllers/Help/SendHelp";
 
 const router = Router()
 
@@ -57,6 +58,7 @@ const listFreelancers = new ListFreelancers()
 const updatePosition = new UpdatePosition()
 const listJob = new ListJob()
 const addCandidate = new AddCandidate()
+const helpModel = new SendHelp()
 
 router.post("/sendMessage", AuthUser, sendMessage.handle);
 router.get("/getConversation/:user1/:user2", AuthUser, getConversation.handle);
@@ -88,6 +90,8 @@ router.get("/ListPositionByUser", AuthUser, listPositionByUser.handle)
 router.get("/ListJob/:jobId", listJob.handle)
 router.put("/UpdatePosition", AuthUser, updatePosition.handle)
 router.get("/ListFreelancers", AuthUser, listFreelancers.handle )
+
+router.post("/SendHelp", AuthUser, helpModel.handle)
 
 router.put("/AddCandidate", AuthUser, addCandidate.handle)
 
