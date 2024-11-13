@@ -91,7 +91,7 @@ router.get("/ListJob/:jobId", listJob.handle)
 router.put("/UpdatePosition", AuthUser, updatePosition.handle)
 router.get("/ListFreelancers", AuthUser, listFreelancers.handle )
 
-router.post("/SendHelp", AuthUser, helpModel.handle)
+router.post("/SendHelp", helpModel.handle)
 
 router.put("/AddCandidate", AuthUser, addCandidate.handle)
 
