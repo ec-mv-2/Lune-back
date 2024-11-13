@@ -22,6 +22,7 @@ import { DeleteExperience } from "./controllers/profile/DeleteExperience";
 import { DeleteAcademic } from "./controllers/profile/DeleteAcademic";
 import { SendMessage } from "./controllers/Communication.ts/SendMessage";
 import { GetConversation } from "./controllers/Communication.ts/GetConversation";
+import { ListFreelancers } from "./controllers/users/ListFreelancers";
 
 const router = Router()
 
@@ -32,6 +33,7 @@ const listUsers = new ListUsers()
 const createUser = new CreateUser()
 const login = new Login()
 const persistenceLogin = new PersistenceLogin()
+
 
 const addSkill = new AddSkill()
 const editSkill = new EditSkill()
@@ -51,6 +53,7 @@ const createPosition = new CreatePosition()
 const listPositionByUser = new ListPositionByUser()
 const deletePosition = new DeletePosition()
 const listPosition = new ListPosition()
+const listFreelancers = new ListFreelancers()
 const updatePosition = new UpdatePosition()
 const listJob = new ListJob()
 const addCandidate = new AddCandidate()
@@ -84,6 +87,7 @@ router.get("/ListPosition", AuthUser, listPosition.handle)
 router.get("/ListPositionByUser", AuthUser, listPositionByUser.handle)
 router.get("/ListJob/:jobId", listJob.handle)
 router.put("/UpdatePosition", AuthUser, updatePosition.handle)
+router.get("/ListFreelancers", AuthUser, listFreelancers.handle )
 
 router.put("/AddCandidate", AuthUser, addCandidate.handle)
 

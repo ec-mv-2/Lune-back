@@ -12,11 +12,13 @@ export class CreatePosition {
                 salary, 
                 skill,
                 jobModel,
-                location,
-                startDate,
-                endDate,
-                degree,
-                experience, isPrivate} = req.body
+                 location,
+                 startDate,
+                 endDate,
+                 degree,
+                 experience, 
+                 isPrivate
+            } = req.body
 
             const contractor = await userModel.findOne({
                 _id: req.userId
