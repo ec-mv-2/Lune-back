@@ -58,7 +58,6 @@ const addCandidate = new AddCandidate()
 router.post("/sendMessage", AuthUser, sendMessage.handle);
 router.get("/getConversation/:user1/:user2", AuthUser, getConversation.handle);
 
-
 router.get("/listUsers", listUsers.handle)
 router.get("/GetUser/:userId", getUser.handle)
 router.put("/UpdateUser", AuthUser, updateUser.handle)
