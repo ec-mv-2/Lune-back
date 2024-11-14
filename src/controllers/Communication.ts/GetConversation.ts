@@ -4,15 +4,24 @@ import Conversation from "./Conversation";
 
 class GetConversation {
   async handle(req: Request, res: Response) {
-    const { user1, user2 } = req.params;
+    const { userId, recipientId } = req.params;
+
+    console.log("Buscando conversa entre:", userId, recipientId );
 
     try {
-      const conversation = await Conversation.findOne({
-        participants: { $all: [user1, user2] },
+      let conversation = await Conversation.findOne({
+        participants: { $all: [userId, recipientId] },
       }).populate("lastMessage");
 
+      
+
+      // Se não encontrar uma conversa, cria uma nova
       if (!conversation) {
-        return res.status(404).json({ error: "Conversa não encontrada" });
+        conversation = new Conversation({
+          participants: [userId, recipientId],
+          lastMessage: null,
+        });
+        await conversation.save();
       }
 
       const messages = await Message.find({
@@ -21,7 +30,7 @@ class GetConversation {
 
       res.status(200).json({ conversation, messages });
     } catch (error) {
-      console.error("Error retrieving conversation:", error);
+      console.error("Erro ao recuperar conversa:", error);
       res.status(500).json({ error: "Erro ao recuperar conversa" });
     }
   }

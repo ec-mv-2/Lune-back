@@ -3,43 +3,38 @@ import Message from "./Message";
 import Conversation from "./Conversation";
 
 class SendMessage {
-  
   async handle(req: Request, res: Response) {
-    const { from, to, text } = req.body;
-
-    if (!from || !to || !text) {
-      return res.status(400).json({ error: "Campos 'from', 'to' e 'text' são obrigatórios." });
-    }
+    const { userId, recipientId, content } = req.body;
 
     try {
       let conversation = await Conversation.findOne({
-        participants: { $all: [from, to] },
+        participants: { $all: [userId, recipientId] },
       });
 
       if (!conversation) {
         conversation = new Conversation({
-          participants: [from, to],
-          lastMessageAt: new Date(),
+          participants: [userId, recipientId],
+          lastMessage: null,
         });
         await conversation.save();
       }
 
       const newMessage = new Message({
-        conversation: conversation._id, 
-        from,  
-        to,
-        text
+        conversation: conversation._id,
+        sender: userId,
+        content,
+        timestamp: new Date(),
       });
+
       await newMessage.save();
 
       conversation.lastMessage = newMessage._id;
-      conversation.lastMessageAt = new Date();
       await conversation.save();
 
-      res.status(200).json({ message: newMessage });
+      res.status(200).json({ message: "Mensagem enviada com sucesso", newMessage });
     } catch (error) {
       console.error("Erro ao enviar mensagem:", error);
-      res.status(500).json({ error: "Erro ao enviar a mensagem" });
+      res.status(500).json({ error: "Erro ao enviar mensagem" });
     }
   }
 }

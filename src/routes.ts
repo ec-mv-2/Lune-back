@@ -61,7 +61,7 @@ const addCandidate = new AddCandidate()
 const helpModel = new SendHelp()
 
 router.post("/sendMessage", AuthUser, sendMessage.handle);
-router.get("/getConversation/:user1/:user2", AuthUser, getConversation.handle);
+router.get("/getConversation/:userId/:recipientId", AuthUser, getConversation.handle);
 
 router.get("/listUsers", listUsers.handle)
 router.get("/GetUser/:userId", getUser.handle)
