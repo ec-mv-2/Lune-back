@@ -24,6 +24,11 @@ import { SendMessage } from "./controllers/Communication.ts/SendMessage";
 import { GetConversation } from "./controllers/Communication.ts/GetConversation";
 import { ListFreelancers } from "./controllers/users/ListFreelancers";
 import { SendHelp } from "./controllers/Help/SendHelp";
+import { Chat } from "./controllers/Communication.ts/chat";
+import { NewMessage } from "./controllers/Communication.ts/newMessage";
+import { ListMessages } from "./controllers/Communication.ts/listMessages";
+
+const chat = new Chat()
 
 const router = Router()
 
@@ -60,8 +65,19 @@ const listJob = new ListJob()
 const addCandidate = new AddCandidate()
 const helpModel = new SendHelp()
 
+const newMessage = new NewMessage()
+
+
+const listMessages = new ListMessages()
+
+router.post("/listMessages", AuthUser, listMessages.handle);
+
+
+router.post("/newMessage", AuthUser, newMessage.handle);
+
+
 router.post("/sendMessage", AuthUser, sendMessage.handle);
-router.get("/getConversation/:userId/:recipientId", AuthUser, getConversation.handle);
+router.post("/getConversation", AuthUser, chat.handle);
 
 router.get("/listUsers", listUsers.handle)
 router.get("/GetUser/:userId", getUser.handle)

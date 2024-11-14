@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import Message from "./Message";
-import Conversation from "./Conversation";
 
 class GetConversation {
   async handle(req: Request, res: Response) {
@@ -9,7 +8,7 @@ class GetConversation {
     console.log("Buscando conversa entre:", userId, recipientId );
 
     try {
-      let conversation = await Conversation.findOne({
+      /*let conversation = await Conversation.findOne({
         participants: { $all: [userId, recipientId] },
       }).populate("lastMessage");
 
@@ -27,8 +26,27 @@ class GetConversation {
       const messages = await Message.find({
         conversation: conversation._id,
       }).sort({ timestamp: 1 });
+      console.log(userId, recipientId )
 
-      res.status(200).json({ conversation, messages });
+      const con = await Conversation.findOne({
+        participants: {$all: [userId, recipientId]}
+      })
+
+      if(!con){
+        const newCon = await Conversation.create({
+          participants: [userId, recipientId]
+        })
+
+        return res.status(200).json(newCon)
+      }
+
+
+
+
+
+
+
+      return res.status(200).json(con);*/
     } catch (error) {
       console.error("Erro ao recuperar conversa:", error);
       res.status(500).json({ error: "Erro ao recuperar conversa" });
