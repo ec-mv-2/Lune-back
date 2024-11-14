@@ -9,6 +9,7 @@ export class ListMessages{
             const {otherUserId} = req.body
             const chat = await chatMOdel.findOne({users: [req.userId, otherUserId]})
 
+            const user = await userModel.findOne({_id: otherUserId})
             if(!chat){
 
                 const chatTeste = await chatMOdel.findOne({users: [otherUserId, req.userId]})
@@ -16,10 +17,10 @@ export class ListMessages{
                     return res.status(404).send({message: "Vaga não encontrada"})
                 }
 
-                return res.status(200).json(chatTeste)
+                return res.status(200).json({chatTeste, user})
             }
 
-            return res.status(200).json(chat)
+            return res.status(200).json({chat, user})
 
         } catch(error){
             console.log(error)
