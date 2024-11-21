@@ -19,6 +19,20 @@ const io = new Server(server, {
     }
 })
 
+io.on("connection", (socket) => {
+    console.log("User connected:", socket.id);
+  
+    socket.on("userConnected", (userId) => {
+      socketToUserMap[socket.id] = userId;
+    });
+  
+    socket.on("disconnect", () => {
+      console.log("User disconnected:", socket.id);
+      delete socketToUserMap[socket.id];  
+    });
+  });
+  
+
 const socketToUserMap: { [key: string]: string } = {};
 
 
