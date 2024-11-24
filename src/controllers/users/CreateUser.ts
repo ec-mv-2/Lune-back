@@ -6,7 +6,7 @@ import bcryptjs from 'bcryptjs'
 export class CreateUser {
     async handle(req: Request, res: Response){
         try{
-            const {name, email, password, cep, state, cpf, birthDate, isContractor} = req.body
+            const {name, email, password, cep, state, cpf, birthDate, isContractor, isADM} = req.body
 
             const userExists = await userModel.findOne({email})
 
@@ -29,7 +29,9 @@ export class CreateUser {
                 skills: [],
                 experience: [],
                 academic: [],
-                isContractor
+                isContractor,
+                isADM,
+                createdAt: new Date()
             })
     
             res.status(200).json(newUser)

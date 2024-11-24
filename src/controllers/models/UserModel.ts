@@ -15,7 +15,9 @@ const userSchema = new Schema({
     skills: [],
     experience: Array,
     academic: Array,
-    isContractor: Boolean
+    isContractor: Boolean,
+    isADM: Boolean,
+    createdAt: Date
 })
 
 export const userModel = model("users", userSchema)

@@ -26,6 +26,9 @@ import { SendHelp } from "./controllers/Help/SendHelp";
 import { Chat } from "./controllers/Communication.ts/chat";
 import { NewMessage } from "./controllers/Communication.ts/newMessage";
 import { ListMessages } from "./controllers/Communication.ts/listMessages";
+import { ListContractors } from "./controllers/users/ListContractors";
+import { ListHelp } from "./controllers/Help/ListHelp";
+import { BanUser } from "./controllers/users/BanUser";
 
 const chat = new Chat()
 
@@ -61,14 +64,23 @@ const listFreelancers = new ListFreelancers()
 const updatePosition = new UpdatePosition()
 const listJob = new ListJob()
 const addCandidate = new AddCandidate()
+
 const helpModel = new SendHelp()
+const listHelp = new ListHelp()
 
 const newMessage = new NewMessage()
 
-
 const listMessages = new ListMessages()
 
+
+const banUser = new BanUser()
+
+const listContractors = new ListContractors()
+
 router.post("/listMessages", AuthUser, listMessages.handle);
+
+router.get("/listContractors", AuthUser, listContractors.handle);
+
 
 
 router.post("/newMessage", AuthUser, newMessage.handle);
@@ -105,6 +117,10 @@ router.put("/UpdatePosition", AuthUser, updatePosition.handle)
 router.get("/ListFreelancers", AuthUser, listFreelancers.handle )
 
 router.post("/SendHelp", helpModel.handle)
+router.get("/ListHelp", listHelp.handle)
+
+router.delete("/BanUser/:userId", AuthUser, banUser.handle)
+
 
 router.put("/AddCandidate", AuthUser, addCandidate.handle)
 

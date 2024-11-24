@@ -10,7 +10,7 @@ const app = express()
 const server = http.createServer(app);
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/lune');
+mongoose.connect('mongodb+srv://kauankauan:e$wTS4n4Rv3qV!3@cluster0.m59di.mongodb.net/');
 
 const io = new Server(server, {
     cors: {
