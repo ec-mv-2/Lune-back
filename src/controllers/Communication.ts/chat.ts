@@ -21,9 +21,11 @@ export class Chat {
       }
 
       const newChat = await chatMOdel.create({
+        
         users: [req.userId, otherUserId],
         messages: [],
-      });
+      })
+      console.log("criou");
 
       res.status(200).json(newChat);
     } catch (err) {

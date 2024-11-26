@@ -78,15 +78,10 @@ const banUser = new BanUser()
 const listContractors = new ListContractors()
 
 router.post("/listMessages", AuthUser, listMessages.handle);
-
 router.get("/listContractors", AuthUser, listContractors.handle);
-
-
-
 router.post("/newMessage", AuthUser, newMessage.handle);
-
-
 router.post("/getConversation", AuthUser, chat.handle);
+
 
 router.get("/listUsers", listUsers.handle)
 router.get("/GetUser/:userId", getUser.handle)

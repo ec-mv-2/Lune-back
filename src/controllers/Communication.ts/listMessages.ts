@@ -21,11 +21,13 @@ export class ListMessages {
 
         // Se não encontrar o chat
         if (!chatTeste) {
+          console.log("n tem chat normal ")
           return res.status(404).send({ message: "Chat não encontrado" });
         }
 
         // Caso encontre um chat invertido
         const user = await userModel.findOne({ _id: otherUserId });
+        
         return res.status(200).json({ chatTeste, user });
       }
 
