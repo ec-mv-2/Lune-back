@@ -29,6 +29,8 @@ import { ListMessages } from "./controllers/Communication.ts/listMessages";
 import { ListContractors } from "./controllers/users/ListContractors";
 import { ListHelp } from "./controllers/Help/ListHelp";
 import { BanUser } from "./controllers/users/BanUser";
+import { CreateNotification } from "./controllers/Notifications/CreateNotifications"
+import { GetNotifications } from "./controllers/Notifications/GetNotifications";
 
 const chat = new Chat()
 
@@ -76,6 +78,13 @@ const listMessages = new ListMessages()
 const banUser = new BanUser()
 
 const listContractors = new ListContractors()
+
+const createNotification = new CreateNotification()
+const getNotification = new GetNotifications()
+
+
+router.post("/createNotification", AuthUser, createNotification.handle);
+router.get("/getNotifications/:userId", AuthUser, getNotification.handle)
 
 router.post("/listMessages", AuthUser, listMessages.handle);
 router.get("/listContractors", AuthUser, listContractors.handle);
