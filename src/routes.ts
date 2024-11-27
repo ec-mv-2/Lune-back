@@ -31,6 +31,7 @@ import { ListHelp } from "./controllers/Help/ListHelp";
 import { BanUser } from "./controllers/users/BanUser";
 import { CreateNotification } from "./controllers/Notifications/CreateNotifications"
 import { GetNotifications } from "./controllers/Notifications/GetNotifications";
+import { DeleteUser } from "./controllers/users/DeleteUser";
 
 const chat = new Chat()
 
@@ -42,7 +43,7 @@ const listUsers = new ListUsers()
 const createUser = new CreateUser()
 const login = new Login()
 const persistenceLogin = new PersistenceLogin()
-
+const deleteUser = new DeleteUser()
 
 const addSkill = new AddSkill()
 const editSkill = new EditSkill()
@@ -95,6 +96,7 @@ router.post("/getConversation", AuthUser, chat.handle);
 router.get("/listUsers", listUsers.handle)
 router.get("/GetUser/:userId", getUser.handle)
 router.put("/UpdateUser", AuthUser, updateUser.handle)
+router.delete("/DeleteUser", AuthUser, deleteUser.handle) 
 
 router.post("/createUser", createUser.handle)
 router.post("/login", login.handle)
