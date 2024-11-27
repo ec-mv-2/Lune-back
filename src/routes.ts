@@ -33,6 +33,9 @@ import { CreateNotification } from "./controllers/Notifications/CreateNotificati
 import { GetNotifications } from "./controllers/Notifications/GetNotifications";
 import { DeleteUser } from "./controllers/users/DeleteUser";
 
+
+const banJob = new BanUser()
+
 const chat = new Chat()
 
 const router = Router()
@@ -129,6 +132,9 @@ router.delete("/BanUser/:userId", AuthUser, banUser.handle)
 
 
 router.put("/AddCandidate", AuthUser, addCandidate.handle)
+
+router.delete("/BanJob/:jobId", AuthUser, banJob.handle)
+
 
 
 export { router }
