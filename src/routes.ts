@@ -32,6 +32,8 @@ import { BanUser } from "./controllers/users/BanUser";
 import { CreateNotification } from "./controllers/Notifications/CreateNotifications"
 import { GetNotifications } from "./controllers/Notifications/GetNotifications";
 import { DeleteUser } from "./controllers/users/DeleteUser";
+import { CreateCoverLetter } from "./controllers/CoverLetter/CreateCoverLetter";
+import { GetCoverLetter } from "./controllers/CoverLetter/GetCoverLetter";
 
 
 const banJob = new BanUser()
@@ -40,7 +42,7 @@ const chat = new Chat()
 
 const router = Router()
 
-const getConversation = new GetConversation();
+// const getConversation = new GetConversation();
 
 const listUsers = new ListUsers()
 const createUser = new CreateUser()
@@ -85,6 +87,12 @@ const listContractors = new ListContractors()
 
 const createNotification = new CreateNotification()
 const getNotification = new GetNotifications()
+
+const createCoverLetter = new CreateCoverLetter()
+const getCoverLetter = new GetCoverLetter();
+
+router.post('/createCoverLetter', AuthUser, createCoverLetter.handle)
+// router.get('/getCoverLetter/:userId', AuthUser, getCoverLetter.handle);
 
 
 router.post("/createNotification", AuthUser, createNotification.handle);
