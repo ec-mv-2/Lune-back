@@ -4,7 +4,8 @@ import { positionModel } from "../models/PositionModel";
 export class ListPositionByUser {
     async handle(req: Request, res: Response){
         try{
-            positionModel.find({contractorId: req.userId}).then(function(position){
+            const {userId} = req.params
+            positionModel.find({contractorId: userId}).then(function(position){
                 res.json(position)
                 console.log(position)
             }).catch(function(err){

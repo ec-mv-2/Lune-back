@@ -10,6 +10,7 @@ export class BanInfo{
             const job = await positionModel.findOne({
                 _id: jobId
             })
+            
             if(!job){
                 return res.status(404).send({message: "Usuário não encontrado"})
             }
