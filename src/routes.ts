@@ -35,10 +35,11 @@ import { DeleteUser } from "./controllers/users/DeleteUser";
 import { CreateCoverLetter } from "./controllers/CoverLetter/CreateCoverLetter";
 import { GetCoverLetter } from "./controllers/CoverLetter/GetCoverLetter";
 import { DisablePosition } from "./controllers/Positions/disablePosition";
+import { BanInfo } from "./controllers/Positions/BanPosition";
 
 const disablePosition = new DisablePosition()
 
-const banJob = new BanUser()
+const banJob = new BanInfo()
 
 const chat = new Chat()
 

@@ -6,7 +6,7 @@ export class BanInfo{
     async handle(req: Request, res: Response){
         try{
             const {jobId} = req.params
-
+            console.log(jobId)
             const job = await positionModel.findOne({
                 _id: jobId
             })

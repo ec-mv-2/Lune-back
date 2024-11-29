@@ -23,6 +23,8 @@ export class BanUser{
                 }
             }
 
+            
+
             await userModel.deleteOne({_id: userId}) 
 
             return res.status(200).json(user)
