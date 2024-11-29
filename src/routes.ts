@@ -34,7 +34,9 @@ import { GetNotifications } from "./controllers/Notifications/GetNotifications";
 import { DeleteUser } from "./controllers/users/DeleteUser";
 import { CreateCoverLetter } from "./controllers/CoverLetter/CreateCoverLetter";
 import { GetCoverLetter } from "./controllers/CoverLetter/GetCoverLetter";
+import { DisablePosition } from "./controllers/Positions/disablePosition";
 
+const disablePosition = new DisablePosition()
 
 const banJob = new BanUser()
 
@@ -91,6 +93,9 @@ const getNotification = new GetNotifications()
 const createCoverLetter = new CreateCoverLetter()
 const getCoverLetter = new GetCoverLetter();
 
+
+
+
 router.post('/createCoverLetter', AuthUser, createCoverLetter.handle)
 // router.get('/getCoverLetter/:userId', AuthUser, getCoverLetter.handle);
 
@@ -108,6 +113,9 @@ router.get("/listUsers", listUsers.handle)
 router.get("/GetUser/:userId", getUser.handle)
 router.put("/UpdateUser", AuthUser, updateUser.handle)
 router.delete("/DeleteUser", AuthUser, deleteUser.handle) 
+
+
+router.put("/DisablePosition", AuthUser, disablePosition.handle)
 
 router.post("/createUser", createUser.handle)
 router.post("/login", login.handle)

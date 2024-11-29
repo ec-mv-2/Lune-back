@@ -17,7 +17,8 @@ const positionSchema = new Schema({
     isPrivate: Boolean,
     candidates: Array,
     contractorId: String,
-    createdAt: Date
+    createdAt: Date,
+    isVisible: Boolean
 })
 
 export const positionModel = model("positions", positionSchema)
