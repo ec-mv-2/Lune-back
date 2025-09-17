@@ -32,6 +32,7 @@ io.on("connection", (socket) => {
     });
   });
   
+print("aaaaa")
 
 const socketToUserMap: { [key: string]: string } = {};
 
